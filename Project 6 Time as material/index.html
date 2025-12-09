@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Decades Collage — Editorial Abstract</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #111111;
+      --muted: #666666;
+      --rule: #e5e5e5;
+      --maxw: 1200px;
+      --gutter: 24px;
+      --label-bg: rgba(255,255,255,0.55);
+      --label-ink: #111111;
+    }
+
+    
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.5;
+    }
+
+    header.masthead {
+      max-width: var(--maxw);
+      margin: 32px auto 8px;
+      padding: 0 var(--gutter);
+    }
+    header.masthead h1 { font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px; }
+    header.masthead .dek { color: var(--muted); margin: 0 0 16px; }
+    .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .toolbar button {
+      border: 1px solid var(--rule);
+      background: #fafafa;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .toolbar button:hover { background: #f2f2f2; }
+
+    
+    .stage-wrap { display: grid; place-items: center; padding: 12px var(--gutter) 40px; }
+    .stage {
+      position: relative;
+      width: min(92vw, var(--maxw));
+      aspect-ratio: 16/10;
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    
+    .layer {
+      --w: 44%;                 
+      --x: 10%;                
+      --y: 10%;                 
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: var(--w);
+      transform: rotate(var(--rot, 0deg));
+      transition: transform .35s ease, filter .35s ease, opacity .35s ease;
+      mix-blend-mode: multiply;  
+      opacity: var(--op, .82);
+      will-change: transform, filter, opacity;
+    }
+
+    .layer img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+      filter: var(--fx, contrast(1.04) saturate(1.03));
+    }
+
+    .label {
+      position: absolute;
+      left: 10px; bottom: 10px;
+      padding: 6px 10px;
+      font-weight: 700;
+      font-size: clamp(12px, 1.6vw, 16px);
+      background: var(--label-bg);
+      color: var(--label-ink);
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    
+    .layer:where(:hover, :focus-within) { z-index: 999 !important; }
+    .layer:where(:hover, :focus-within) img { filter: contrast(1.1) saturate(1.06) brightness(1.06); }
+    .layer:where(:hover, :focus-within) { transform: translateY(-3px) rotate(var(--rot, 0deg)); }
+
+    
+    .blurb {
+      position: absolute;
+      inset: auto 10px 42px 10px;
+      padding: 8px 10px;
+      font-size: clamp(11px, 1.3vw, 14px);
+      line-height: 1.35;
+      color: #222;
+      background: rgba(255,255,255,0.6);
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: .25s ease;
+    }
+    .layer:hover .blurb, .layer:focus-within .blurb { opacity: 1; transform: translateY(0); }
+
+ 
+    @media (max-width: 720px) {
+      .stage { aspect-ratio: 4/5; }
+      .layer { --w: 62%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <h1>Layers: 1950s → 2020s</h1>
+    <p class="dek">Editorial abstract collage of fashion photography across decades. Hover to read blurbs. Use the controls to shuffle the layout.</p>
+    <div class="toolbar" aria-label="Collage Controls">
+      <button id="shuffle">Shuffle layout (S)</button>
+      <button id="cycleBlend">Cycle blend mode</button>
+      <button id="reset">Reset</button>
+    </div>
+  </header>
+
+  <main class="stage-wrap">
+    <section class="stage" id="stage" aria-label="Editorial collage canvas">
+     
+
+      <figure class="layer" data-decade="1950s" style="--w:42%; --x:6%; --y:8%; --rot:-2deg; --op:.9; --fx:grayscale(.9) contrast(1.1);">
+        <img src="images/1950s.jpg" alt="1950s fashion portrait" />
+        <figcaption class="label">1950s</figcaption>
+        <figcaption class="blurb">Post-war polish and couture silhouettes photographed with crisp studio light; think Irving Penn’s poise.</figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="1960s" style="--w:38%; --x:48%; --y:6%; --rot:2.5deg; --op:.85; --fx:contrast(1.05) saturate(1.02);">
+        <img src="images/1960s.jpg" alt="1960s fashion portrait" />
+        <figcaption class="label">1960s</figcaption>
+        <figcaption class="blurb">Youthquake energy, mod minimalism and graphic shapes; editorial cool with playful motion.</figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="1970s" style="--w:46%; --x:22%; --y:20%; --rot:-1deg; --op:.8; --fx:saturate(1.06) contrast(1.06);">
+        <img src="images/1970s.jpg" alt="1970s fashion portrait" />
+        <figcaption class="label">1970s</figcaption>
+        <figcaption class="blurb">Warm film tones, boho to glam rock; Helmut Newton drama meets candid street attitude.</figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="1980s" style="--w:40%; --x:58%; --y:34%; --rot:3deg; --op:.78; --fx:contrast(1.15) saturate(1.08);">
+        <img src="images/1980s.jpg" alt="1980s fashion portrait" />
+        <figcaption class="label">1980s</figcaption>
+        <figcaption class="blurb">Power shoulders, chrome shine, unapologetic flash; larger-than-life glamour.</figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="1990s" style="--w:44%; --x:6%; --y:48%; --rot:-4deg; --op:.82; --fx:saturate(1.0) contrast(1.1);">
+        <img src="images/1990s.jpg" alt="1990s fashion portrait" />
+        <figcaption class="label">1990s</figcaption>
+        <figcaption class="blurb">Minimalism, grunge edges, and supermodel era; Meisel’s clean lines to Corinne Day’s rawness.</figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="2000s" style="--w:38%; --x:36%; --y:60%; --rot:1.5deg; --op:.8; --fx:contrast(1.12) saturate(1.05);">
+        <img src="images/2000s.jpg" alt="2000s fashion portrait" />
+        <figcaption class="label">2000s</figcaption>
+        <figcaption class="blurb">Digital gloss, Y2K pop; sharp highlights and vibrant editorial color blocking.</figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="2020s" style="--w:42%; --x:64%; --y:64%; --rot:-2deg; --op:.86; --fx:contrast(1.06) saturate(1.02);">
+        <img src="images/2010s.jpg" alt="2020s fashion portrait" />
+        <figcaption class="label">2020s</figcaption>
+        <figcaption class="blurb">Hyper-clean, post-digital restraint; quiet luxury and color stories with softness.</figcaption>
+      </figure>
+
+    </section>
+  </main>
+
+  <script>
+    // Small utility to randomize the collage layout while keeping it elegant
+    (function() {
+      const stage = document.getElementById('stage');
+      const layers = Array.from(stage.querySelectorAll('.layer'));
+      const blends = ['multiply','overlay','screen','hard-light','soft-light','normal'];
+      let blendIndex = 0;
+
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+
+      function shuffleLayout() {
+        layers.forEach((el, i) => {
+          const w = window.innerWidth < 740 ? rand(52, 72) : rand(34, 52); // % width
+          const x = rand(3, 68);   // left %
+          const y = rand(4, 70);   // top %
+          const r = rand(-5, 5);   // deg
+          const o = rand(0.72, 0.92);
+          el.style.setProperty('--w', w + '%');
+          el.style.setProperty('--x', x + '%');
+          el.style.setProperty('--y', y + '%');
+          el.style.setProperty('--rot', r + 'deg');
+          el.style.setProperty('--op', o);
+          el.style.zIndex = 10 + Math.floor(rand(0, 90));
+        });
+      }
+
+      function cycleBlend() {
+        blendIndex = (blendIndex + 1) % blends.length;
+        const mode = blends[blendIndex];
+        layers.forEach(el => el.style.mixBlendMode = mode);
+      }
+
+      function resetLayout() {
+        
+        layers.forEach((el, idx) => {
+          el.removeAttribute('style');
+        });
+      }
+
+      document.getElementById('shuffle').addEventListener('click', shuffleLayout);
+      document.getElementById('cycleBlend').addEventListener('click', cycleBlend);
+      document.getElementById('reset').addEventListener('click', resetLayout);
+
+      
+      window.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === 's') shuffleLayout();
+        if (e.key.toLowerCase() === 'b') cycleBlend();
+        if (e.key.toLowerCase() === 'r') resetLayout();
+      });
+    })();
+  </script>
+</body>
+</html>
