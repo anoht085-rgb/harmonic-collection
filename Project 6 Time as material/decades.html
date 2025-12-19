@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Decades Collage — Editorial Abstract</title>
+  <link rel="stylesheet" href="decades.css" />
+</head>
+<body>
+  <header class="masthead">
+    <h1>Layers: 1950s → 2020s</h1>
+    <p class="dek">
+      Editorial abstract collage of fashion photography across decades. Hover to read blurbs.
+      Use the controls to shuffle the layout.
+    </p>
+    <div class="toolbar" aria-label="Collage Controls">
+      <button id="shuffle">Shuffle layout (S)</button>
+      <button id="cycleBlend">Cycle blend mode</button>
+      <button id="reset">Reset</button>
+    </div>
+  </header>
+
+  <main class="stage-wrap">
+    <section class="stage" id="stage" aria-label="Editorial collage canvas">
+      <figure class="layer" data-decade="1950s">
+        <img src="images/1950s.jpg" alt="1950s fashion portrait" />
+        <figcaption class="label">1950s</figcaption>
+        <figcaption class="blurb">
+          Post-war polish and couture silhouettes photographed with crisp studio light;
+          think Irving Penn’s poise.
+        </figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="1960s">
+        <img src="images/1960s.jpg" alt="1960s fashion portrait" />
+        <figcaption class="label">1960s</figcaption>
+        <figcaption class="blurb">
+          Youthquake energy, mod minimalism and graphic shapes; editorial cool with playful motion.
+        </figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="1970s">
+        <img src="images/1970s.jpg" alt="1970s fashion portrait" />
+        <figcaption class="label">1970s</figcaption>
+        <figcaption class="blurb">
+          Warm film tones, boho to glam rock; Helmut Newton drama meets candid street attitude.
+        </figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="1980s">
+        <img src="images/1980s.jpg" alt="1980s fashion portrait" />
+        <figcaption class="label">1980s</figcaption>
+        <figcaption class="blurb">
+          Power shoulders, chrome shine, unapologetic flash; larger-than-life glamour.
+        </figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="1990s">
+        <img src="images/1990s.jpg" alt="1990s fashion portrait" />
+        <figcaption class="label">1990s</figcaption>
+        <figcaption class="blurb">
+          Minimalism, grunge edges, and supermodel era; Meisel’s clean lines to Corinne Day’s rawness.
+        </figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="2000s">
+        <img src="images/2000s.jpg" alt="2000s fashion portrait" />
+        <figcaption class="label">2000s</figcaption>
+        <figcaption class="blurb">
+          Digital gloss, Y2K pop; sharp highlights and vibrant editorial color blocking.
+        </figcaption>
+      </figure>
+
+      <figure class="layer" data-decade="2020s">
+        <img src="images/2010s.jpg" alt="2020s fashion portrait" />
+        <figcaption class="label">2020s</figcaption>
+        <figcaption class="blurb">
+          Hyper-clean, post-digital restraint; quiet luxury and color stories with softness.
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <script src="decades.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harmonic Collection — 1960s Print Lab</title>
+  <link rel="stylesheet" href="project8.css" />
+</head>
+<body>
+
+  <header class="masthead">
+    <p class="kicker">Harmonic Collection · Project 8</p>
+    <h1>1960s Fashion Photography Print Lab</h1>
+    <p class="dek">Full-bleed editorial web-to-print poster generator.</p>
+    <hr class="hairline" />
+  </header>
+
+  <main class="layout">
+
+    <!-- CONTROLS -->
+    <section id="settings">
+      <div class="field">
+        <label>Backdrop Color <span class="colorbean"></span></label>
+        <input id="bg-color" type="color" value="#ffffff">
+      </div>
+
+      <div class="field">
+        <label>Headline Color</label>
+        <input id="title-color" type="color" value="#111111">
+      </div>
+
+      <div class="field">
+        <label>Shoot Mode</label>
+        <select id="muse">
+          <option value="">Select</option>
+          <option value="studio">Studio</option>
+          <option value="street">Street</option>
+          <option value="couture">Couture</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Headline</label>
+        <input id="title" type="text" value="MOD GIRL, 1966">
+      </div>
+
+      <div class="field">
+        <label>Title Scale</label>
+        <input id="title-size" type="range" min="28" max="96" value="64">
+      </div>
+
+      <div class="field">
+        <label>Print Texture</label>
+        <input id="grain" type="range" min="0" max="6" value="1">
+      </div>
+
+      <label class="checkbox">
+        <input type="checkbox" id="frame-toggle" checked>
+        Full Editorial Plate
+      </label>
+
+      <button id="print">Print</button>
+    </section>
+
+    <!-- POSTER -->
+    <section id="poster" class="poster-framed">
+      <div class="poster-inner">
+        <img id="poster-image" src="images/mod.jpg" alt="1960s fashion">
+
+        <div class="poster-overlay">
+          <p class="poster-tagline">Harmonic Collection · 1960s</p>
+          <h1 id="poster-text">MOD GIRL, 1966</h1>
+          <p id="poster-caption">Graphic liner, clean silhouette, London studio.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="project8.js"></script>
+</body>
+</html>
+

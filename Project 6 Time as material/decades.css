@@ -1,0 +1,237 @@
+:root {
+  --bg: #ffffff;
+  --ink: #111111;
+  --muted: #666666;
+  --rule: #e5e5e5;
+  --maxw: 1200px;
+  --gutter: 24px;
+  --label-bg: rgba(255, 255, 255, 0.55);
+  --label-ink: #111111;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Helvetica, Arial, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+/* Header / toolbar */
+
+header.masthead {
+  max-width: var(--maxw);
+  margin: 32px auto 8px;
+  padding: 0 var(--gutter);
+}
+
+header.masthead h1 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+header.masthead .dek {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.toolbar button {
+  border: 1px solid var(--rule);
+  background: #fafafa;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.toolbar button:hover {
+  background: #f2f2f2;
+}
+
+/* Stage */
+
+.stage-wrap {
+  display: grid;
+  place-items: center;
+  padding: 12px var(--gutter) 40px;
+}
+
+.stage {
+  position: relative;
+  width: min(92vw, var(--maxw));
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Layers */
+
+.layer {
+  --w: 44%;
+  --x: 10%;
+  --y: 10%;
+  --rot: 0deg;
+  --op: 0.82;
+  --fx: contrast(1.04) saturate(1.03);
+
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  transform: rotate(var(--rot));
+  transition: transform 0.35s ease, filter 0.35s ease, opacity 0.35s ease;
+  mix-blend-mode: multiply;
+  opacity: var(--op);
+  will-change: transform, filter, opacity;
+}
+
+.layer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  filter: var(--fx);
+}
+
+/* Labels & blurbs */
+
+.label {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  font-weight: 700;
+  font-size: clamp(12px, 1.6vw, 16px);
+  background: var(--label-bg);
+  color: var(--label-ink);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+
+.blurb {
+  position: absolute;
+  inset: auto 10px 42px 10px;
+  padding: 8px 10px;
+  font-size: clamp(11px, 1.3vw, 14px);
+  line-height: 1.35;
+  color: #222;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: 0.25s ease;
+}
+
+.layer:hover .blurb,
+.layer:focus-within .blurb {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover lift */
+
+.layer:where(:hover, :focus-within) {
+  z-index: 999 !important;
+}
+
+.layer:where(:hover, :focus-within) img {
+  filter: contrast(1.1) saturate(1.06) brightness(1.06);
+}
+
+.layer:where(:hover, :focus-within) {
+  transform: translateY(-3px) rotate(var(--rot));
+}
+
+/* Default layout per decade (no inline styles needed) */
+
+.layer[data-decade="1950s"] {
+  --w: 42%;
+  --x: 6%;
+  --y: 8%;
+  --rot: -2deg;
+  --op: 0.9;
+  --fx: grayscale(0.9) contrast(1.1);
+}
+
+.layer[data-decade="1960s"] {
+  --w: 38%;
+  --x: 48%;
+  --y: 6%;
+  --rot: 2.5deg;
+  --op: 0.85;
+  --fx: contrast(1.05) saturate(1.02);
+}
+
+.layer[data-decade="1970s"] {
+  --w: 46%;
+  --x: 22%;
+  --y: 20%;
+  --rot: -1deg;
+  --op: 0.8;
+  --fx: saturate(1.06) contrast(1.06);
+}
+
+.layer[data-decade="1980s"] {
+  --w: 40%;
+  --x: 58%;
+  --y: 34%;
+  --rot: 3deg;
+  --op: 0.78;
+  --fx: contrast(1.15) saturate(1.08);
+}
+
+.layer[data-decade="1990s"] {
+  --w: 44%;
+  --x: 6%;
+  --y: 48%;
+  --rot: -4deg;
+  --op: 0.82;
+  --fx: saturate(1) contrast(1.1);
+}
+
+.layer[data-decade="2000s"] {
+  --w: 38%;
+  --x: 36%;
+  --y: 60%;
+  --rot: 1.5deg;
+  --op: 0.8;
+  --fx: contrast(1.12) saturate(1.05);
+}
+
+.layer[data-decade="2020s"] {
+  --w: 42%;
+  --x: 64%;
+  --y: 64%;
+  --rot: -2deg;
+  --op: 0.86;
+  --fx: contrast(1.06) saturate(1.02);
+}
+
+/* Responsive */
+
+@media (max-width: 720px) {
+  .stage {
+    aspect-ratio: 4 / 5;
+  }
+
+  .layer {
+    --w: 62%;
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 9 — Fashion Timeline 2000–2019</title>
+  <link rel="stylesheet" href="project9.css" />
+</head>
+<body class="helv-only">
+  <header class="masthead">
+    <h1>Fashion Image Timeline 2000–2019</h1>
+    <p class="dek">
+      An interactive timeline tracing how fashion photography and luxury branding
+      shift from Y2K fantasy to Instagram-era image culture.
+    </p>
+    <hr class="hairline" />
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: CONTROLS -->
+    <section class="controls">
+      <div class="step-indicator" id="step-indicator">
+        Step 1 of 2 · Choose a time chapter
+      </div>
+
+      <!-- STEP 1: CHAPTER -->
+      <section class="step" id="step-chapter">
+        <h2>Step 1 — Choose a chapter</h2>
+        <p class="hint">Start in early 2000s gloss or 2010s feeds.</p>
+        <div class="chapter-buttons">
+          <button class="pill" id="btn-early" data-chapter="2000-2010">
+            2000–2010 · Y2K & It Bags
+          </button>
+          <button class="pill" id="btn-late" data-chapter="2010-2019">
+            2010–2019 · Tumblr to Instagram
+          </button>
+        </div>
+      </section>
+
+      <!-- STEP 2: YEAR NODES -->
+      <section class="step" id="step-year" aria-hidden="true">
+        <h2>Step 2 — Jump to a key year</h2>
+        <p class="hint" id="year-hint">
+          Pick a chapter first to see key fashion image moments.
+        </p>
+        <div class="year-options" id="year-options">
+          <!-- JS will inject year buttons here -->
+        </div>
+      </section>
+
+      <!-- ACTIONS -->
+      <section class="actions">
+        <button id="reset" class="ghost">
+          Reset timeline
+        </button>
+      </section>
+    </section>
+
+    <!-- RIGHT: RESULT PANEL -->
+    <section class="result" id="result-panel">
+      <div class="result-header">
+        <span class="tag" id="result-year-tag">Year: —</span>
+        <span class="tag" id="result-designer-tag">Designer: —</span>
+        <span class="tag" id="result-platform-tag">Platform: —</span>
+      </div>
+
+      <figure class="result-figure">
+        <div class="result-image-wrapper">
+          <img
+            id="result-image"
+            src=""
+            alt="Fashion photography reference"
+          />
+        </div>
+        <figcaption id="result-caption">
+          Choose a chapter, then a year, to see how fashion photography and designers
+          redefined the image in that moment.
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <script src="project9.js"></script>
+</body>
+</html>
+
