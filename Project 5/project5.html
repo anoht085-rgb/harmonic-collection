@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 5 — 1980s Spreads</title>
+  <link rel="stylesheet" href="project5.css" />
+</head>
+<body class="helv-only">
+  <main class="page">
+    <!-- PERSPECTIVE TEXT -->
+    <section class="intro">
+      <h1 class="eyebrow">Perspective</h1>
+      <p>
+        Mattern shows how the same sound can feel different depending on the context:
+        a comforting car door “clunk,” a manipulative slot-machine jingle, a calm laptop
+        startup tone. Here, the same 1980s photographs shift with the screen.
+      </p>
+      <p class="intro-mobile">
+        On mobile they read as an emotional scrapbook of the decade — one image at a time,
+        with diary-style captions.
+      </p>
+      <p class="intro-desktop">
+        On desktop they become a research grid, annotated with themes and references,
+        like an art director’s toolkit for building an ’80s campaign.
+      </p>
+    </section>
+
+    <!-- 1980s SPREADS -->
+    <section class="spreads">
+      <h2 class="section-label">1980s Spreads</h2>
+
+      <div class="grid" id="spreadsGrid">
+        <!-- CARD 1: POWER SUIT -->
+        <article class="card">
+          <figure class="card-media">
+            <img src="images/1980s-power-suit.jpg"
+                 alt="Grace Jones style 1980s power suit" />
+          </figure>
+          <div class="card-body">
+            <p class="card-title">1980s · Power Suit</p>
+            <p class="card-caption">
+              The boardroom as stage: mirror-glass, hard shoulders, and the cold calm of control.
+            </p>
+            <dl class="card-meta">
+              <div>
+                <dt>Theme</dt>
+                <dd>Power dressing, corporate glamour</dd>
+              </div>
+              <div>
+                <dt>Decade</dt>
+                <dd>1980s</dd>
+              </div>
+              <div>
+                <dt>Reference</dt>
+                <dd>Vogue / Armani-style suiting campaigns</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+
+        <!-- CARD 2: AEROBICS -->
+        <article class="card">
+          <figure class="card-media">
+            <img src="images/1980s-aerobics.jpg"
+                 alt="1980s aerobics fashion in pink neon leotard" />
+          </figure>
+          <div class="card-body">
+            <p class="card-title">1980s · Aerobics</p>
+            <p class="card-caption">
+              Neon optimism: sweating becomes a televised lifestyle, not a private effort.
+            </p>
+            <dl class="card-meta">
+              <div>
+                <dt>Theme</dt>
+                <dd>Sportswear, wellness as image</dd>
+              </div>
+              <div>
+                <dt>Decade</dt>
+                <dd>1980s</dd>
+              </div>
+              <div>
+                <dt>Reference</dt>
+                <dd>Jane Fonda-era aerobics aesthetics</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+
+        <!-- CARD 4: AVANT-GARDE -->
+        <article class="card">
+          <figure class="card-media">
+            <img src="images/1980s-avant-garde.jpg"
+                 alt="1980s Japanese avant-garde black looks" />
+          </figure>
+          <div class="card-body">
+            <p class="card-title">1980s · Avant-Garde</p>
+            <p class="card-caption">
+              All black, no sparkle: a quiet refusal of ’80s gloss, like turning the volume down.
+            </p>
+            <dl class="card-meta">
+              <div>
+                <dt>Theme</dt>
+                <dd>Japanese avant-garde, anti-glamour</dd>
+              </div>
+              <div>
+                <dt>Decade</dt>
+                <dd>1980s</dd>
+              </div>
+              <div>
+                <dt>Reference</dt>
+                <dd>Comme des Garçons / Yohji Yamamoto</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- tiny JS for shuffle + fade-in -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const grid = document.getElementById("spreadsGrid");
+      const cards = Array.from(grid.querySelectorAll(".card"));
+
+      // shuffle array
+      const shuffled = cards
+        .map(card => ({ card, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(item => item.card);
+
+      // re-append in new order
+      shuffled.forEach(card => grid.appendChild(card));
+
+      // add loaded class for animation
+      document.body.classList.add("is-loaded");
+    });
+  </script>
+</body>
+</html>
